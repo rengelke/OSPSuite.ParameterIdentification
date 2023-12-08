@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -19,7 +19,7 @@ piConfiguration <- PIConfiguration$new()
 piConfiguration$printEvaluationFeedback <- TRUE
 
 ## ----include=TRUE, eval=TRUE--------------------------------------------------
-simulations <- c(loadSimulation("tests/dev/Models/Simulations/Aciclovir.pkml"))
+simulations <- c(loadSimulation("inst/extdata/Models/Aciclovir.pkml"))
 names(simulations) <- "Aciclovir"
 
 ## ----include=TRUE, eval=TRUE--------------------------------------------------
@@ -33,15 +33,15 @@ parameters[[1]]$minValue <- -10
 parameters[[1]]$maxValue <- 10
 
 ## ----include=TRUE, eval=TRUE--------------------------------------------------
-filePath <- "tests/data/AciclovirLaskinData.xlsx"
+filePath <- "inst/extdata/Data/AciclovirLaskinData.xlsx"
 dataConfiguration <- createImporterConfigurationForFile(filePath = filePath)
 dataConfiguration$sheets <- "Laskin 1982.Group A"
 dataConfiguration$namingPattern <- "{Source}.{Sheet}"
 observedData <- loadDataSetsFromExcel(xlsFilePath = filePath, importerConfigurationOrPath = dataConfiguration)
 
 ## ----include=TRUE, eval=FALSE-------------------------------------------------
-#  filePath <- "tests/data/AciclovirLaskinData.xlsx"
-#  dataConfiguration <- loadDataImporterConfiguration("tests/data/dataImporter_configuration.xml")
+#  filePath <- "inst/extdata/Data/AciclovirLaskinData.xlsx"
+#  dataConfiguration <- loadDataImporterConfiguration("inst/extdata/Data/dataImporter_configuration.xml")
 #  observedData <- loadDataSetsFromExcel(xlsFilePath = filePath, importerConfigurationOrPath = dataConfiguration)
 
 ## ----include=TRUE, eval=TRUE--------------------------------------------------
@@ -93,7 +93,7 @@ task$plotOFVProfiles(cachedAciclovirFullProfile)[[1]]
 ## ----include=TRUE, eval=TRUE--------------------------------------------------
 piConfiguration <- PIConfiguration$new()
 piConfiguration$printEvaluationFeedback <- TRUE
-simulations <- c(loadSimulation("tests/dev/Models/Simulations/Smith1981 iv 5mg Midazolam.pkml"))
+simulations <- c(loadSimulation("inst/extdata/Models/Smith1981 iv 5mg Midazolam.pkml"))
 names(simulations) <- "Midazolam"
 
 ## ----include=TRUE, eval=TRUE--------------------------------------------------
@@ -121,7 +121,7 @@ for (idx in seq_along(parameterInputData)) {
   parameters[[idx]]$maxValue <- parameterInputData[[idx]]$max
   parameters[[idx]]$startValue <- parameterInputData[[idx]]$start
 }
-filePath <- "tests/data/Midazolam_Smith_1981.xlsx"
+filePath <- "inst/extdata/Data/Midazolam_Smith_1981.xlsx"
 dataConfiguration <- createImporterConfigurationForFile(filePath = filePath)
 dataConfiguration$sheets <- "Smith1981"
 dataConfiguration$namingPattern <- "{Source}.{Sheet}"
@@ -150,11 +150,11 @@ task$plotGrid(cachedMidazolamGrid)
 
 ## ----include=TRUE, message=FALSE, eval=TRUE-----------------------------------
 simulations <- c(
-  "IV250" = loadSimulation("tests/dev/Models/Simulations/Chu1992 iv 250mg Clarithromycin.pkml"),
-  "PO250" = loadSimulation("tests/dev/Models/Simulations/Chu1993 po 250mg Clarithromycin.pkml"),
-  "PO250MD" = loadSimulation("tests/dev/Models/Simulations/Chu1993 po 250mg md Clarithromycin.pkml"),
-  "PO500" = loadSimulation("tests/dev/Models/Simulations/Chu1993 po 500mg Clarithromycin.pkml"),
-  "PO500MD" = loadSimulation("tests/dev/Models/Simulations/Chu1993 po 500mg md Clarithromycin.pkml")
+  "IV250" = loadSimulation("inst/extdata/Models/Chu1992 iv 250mg Clarithromycin.pkml"),
+  "PO250" = loadSimulation("inst/extdata/Models/Chu1993 po 250mg Clarithromycin.pkml"),
+  "PO250MD" = loadSimulation("inst/extdata/Models/Chu1993 po 250mg md Clarithromycin.pkml"),
+  "PO500" = loadSimulation("inst/extdata/Models/Chu1993 po 500mg Clarithromycin.pkml"),
+  "PO500MD" = loadSimulation("inst/extdata/Models/Chu1993 po 500mg md Clarithromycin.pkml")
 )
 piConfiguration <- PIConfiguration$new()
 
@@ -180,12 +180,12 @@ for (idx in seq_along(parameterInputData)) {
 
 # Observed data is loaded from two different files
 # because IV data is reported in µmol/L, and PO data is reported in µg/ml
-filePath <- "tests/data/Clarithromycin_Chu_1992.xlsx"
+filePath <- "inst/extdata/Data/Clarithromycin_Chu_1992.xlsx"
 dataConfiguration <- createImporterConfigurationForFile(filePath = filePath)
 dataConfiguration$sheets <- "IV250"
 dataConfiguration$namingPattern <- "{Sheet}"
 observedData_IV <- loadDataSetsFromExcel(xlsFilePath = filePath, importerConfigurationOrPath = dataConfiguration)
-filePath <- "tests/data/Clarithromycin_Chu_1993.xlsx"
+filePath <- "inst/extdata/Data/Clarithromycin_Chu_1993.xlsx"
 dataConfiguration <- createImporterConfigurationForFile(filePath = filePath)
 dataConfiguration$sheets <- c("PO250", "PO250MD", "PO500", "PO500MD")
 dataConfiguration$namingPattern <- "{Sheet}"

@@ -387,7 +387,7 @@ differential evolution algorithm may be more suitable.</p></li>
 <div id="extracting-parameters-from-the-model" class="section level3">
 <h3>Extracting parameters from the model</h3>
 <p>A sample PKML file with the model is shipped with the package:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>simulations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Aciclovir.pkml&quot;</span>))</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>simulations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Aciclovir.pkml&quot;</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">names</span>(simulations) <span class="ot">&lt;-</span> <span class="st">&quot;Aciclovir&quot;</span></span></code></pre></div>
 <p>The parameter corresponding to the lipophilicity of aciclovir is
 called <code>Aciclovir|Lipophilicity</code> within the model. The
@@ -408,7 +408,7 @@ parameter bounds from previous knowledge:</p>
 <h3>Reading observed data</h3>
 <p>We need to supply the observed data which we are going to use to
 identify parameter values.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;tests/data/AciclovirLaskinData.xlsx&quot;</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;inst/extdata/Data/AciclovirLaskinData.xlsx&quot;</span></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>dataConfiguration <span class="ot">&lt;-</span> <span class="fu">createImporterConfigurationForFile</span>(<span class="at">filePath =</span> filePath)</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>sheets <span class="ot">&lt;-</span> <span class="st">&quot;Laskin 1982.Group A&quot;</span></span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>namingPattern <span class="ot">&lt;-</span> <span class="st">&quot;{Source}.{Sheet}&quot;</span></span>
@@ -419,8 +419,8 @@ tries to guess column names in the Excel file. If you run into errors
 while importing the data, try to create the importer configuration from
 the PK-Sim GUI, export it as an <code>XML</code> file and re-use it for
 importing observed data into R as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;tests/data/AciclovirLaskinData.xlsx&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>dataConfiguration <span class="ot">&lt;-</span> <span class="fu">loadDataImporterConfiguration</span>(<span class="st">&quot;tests/data/dataImporter_configuration.xml&quot;</span>)</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;inst/extdata/Data/AciclovirLaskinData.xlsx&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>dataConfiguration <span class="ot">&lt;-</span> <span class="fu">loadDataImporterConfiguration</span>(<span class="st">&quot;inst/extdata/Data/dataImporter_configuration.xml&quot;</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>observedData <span class="ot">&lt;-</span> <span class="fu">loadDataSetsFromExcel</span>(<span class="at">xlsFilePath =</span> filePath, <span class="at">importerConfigurationOrPath =</span> dataConfiguration)</span></code></pre></div>
 </div>
 <div id="mapping-data-to-model-outputs" class="section level3">
@@ -566,7 +566,7 @@ estimation problems:</p>
 <p>Load the model by running</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>piConfiguration <span class="ot">&lt;-</span> PIConfiguration<span class="sc">$</span><span class="fu">new</span>()</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>piConfiguration<span class="sc">$</span>printEvaluationFeedback <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>simulations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Smith1981 iv 5mg Midazolam.pkml&quot;</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>simulations <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Smith1981 iv 5mg Midazolam.pkml&quot;</span>))</span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="fu">names</span>(simulations) <span class="ot">&lt;-</span> <span class="st">&quot;Midazolam&quot;</span></span></code></pre></div>
 <p>The midazolam model shipped with this package includes two free
 parameters: lipophilicity of midazolam and the catalytic activity of the
@@ -610,7 +610,7 @@ and to run the task.</p>
 <span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a>  parameters[[idx]]<span class="sc">$</span>maxValue <span class="ot">&lt;-</span> parameterInputData[[idx]]<span class="sc">$</span>max</span>
 <span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a>  parameters[[idx]]<span class="sc">$</span>startValue <span class="ot">&lt;-</span> parameterInputData[[idx]]<span class="sc">$</span>start</span>
 <span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a>}</span>
-<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;tests/data/Midazolam_Smith_1981.xlsx&quot;</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;inst/extdata/Data/Midazolam_Smith_1981.xlsx&quot;</span></span>
 <span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a>dataConfiguration <span class="ot">&lt;-</span> <span class="fu">createImporterConfigurationForFile</span>(<span class="at">filePath =</span> filePath)</span>
 <span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>sheets <span class="ot">&lt;-</span> <span class="st">&quot;Smith1981&quot;</span></span>
 <span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>namingPattern <span class="ot">&lt;-</span> <span class="st">&quot;{Source}.{Sheet}&quot;</span></span>
@@ -651,11 +651,11 @@ distinct studies and includes three parameters that should be optimized.
 Load the simulations, the parameters, the observed data and the task by
 running the following code:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>simulations <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="st">&quot;IV250&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Chu1992 iv 250mg Clarithromycin.pkml&quot;</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="st">&quot;PO250&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Chu1993 po 250mg Clarithromycin.pkml&quot;</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="st">&quot;PO250MD&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Chu1993 po 250mg md Clarithromycin.pkml&quot;</span>),</span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="st">&quot;PO500&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Chu1993 po 500mg Clarithromycin.pkml&quot;</span>),</span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  <span class="st">&quot;PO500MD&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;tests/dev/Models/Simulations/Chu1993 po 500mg md Clarithromycin.pkml&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="st">&quot;IV250&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Chu1992 iv 250mg Clarithromycin.pkml&quot;</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="st">&quot;PO250&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Chu1993 po 250mg Clarithromycin.pkml&quot;</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="st">&quot;PO250MD&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Chu1993 po 250mg md Clarithromycin.pkml&quot;</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="st">&quot;PO500&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Chu1993 po 500mg Clarithromycin.pkml&quot;</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  <span class="st">&quot;PO500MD&quot;</span> <span class="ot">=</span> <span class="fu">loadSimulation</span>(<span class="st">&quot;inst/extdata/Models/Chu1993 po 500mg md Clarithromycin.pkml&quot;</span>)</span>
 <span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>)</span>
 <span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>piConfiguration <span class="ot">&lt;-</span> PIConfiguration<span class="sc">$</span><span class="fu">new</span>()</span>
 <span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a></span>
@@ -681,12 +681,12 @@ running the following code:</p>
 <span id="cb17-29"><a href="#cb17-29" tabindex="-1"></a></span>
 <span id="cb17-30"><a href="#cb17-30" tabindex="-1"></a><span class="co"># Observed data is loaded from two different files</span></span>
 <span id="cb17-31"><a href="#cb17-31" tabindex="-1"></a><span class="co"># because IV data is reported in µmol/L, and PO data is reported in µg/ml</span></span>
-<span id="cb17-32"><a href="#cb17-32" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;tests/data/Clarithromycin_Chu_1992.xlsx&quot;</span></span>
+<span id="cb17-32"><a href="#cb17-32" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;inst/extdata/Data/Clarithromycin_Chu_1992.xlsx&quot;</span></span>
 <span id="cb17-33"><a href="#cb17-33" tabindex="-1"></a>dataConfiguration <span class="ot">&lt;-</span> <span class="fu">createImporterConfigurationForFile</span>(<span class="at">filePath =</span> filePath)</span>
 <span id="cb17-34"><a href="#cb17-34" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>sheets <span class="ot">&lt;-</span> <span class="st">&quot;IV250&quot;</span></span>
 <span id="cb17-35"><a href="#cb17-35" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>namingPattern <span class="ot">&lt;-</span> <span class="st">&quot;{Sheet}&quot;</span></span>
 <span id="cb17-36"><a href="#cb17-36" tabindex="-1"></a>observedData_IV <span class="ot">&lt;-</span> <span class="fu">loadDataSetsFromExcel</span>(<span class="at">xlsFilePath =</span> filePath, <span class="at">importerConfigurationOrPath =</span> dataConfiguration)</span>
-<span id="cb17-37"><a href="#cb17-37" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;tests/data/Clarithromycin_Chu_1993.xlsx&quot;</span></span>
+<span id="cb17-37"><a href="#cb17-37" tabindex="-1"></a>filePath <span class="ot">&lt;-</span> <span class="st">&quot;inst/extdata/Data/Clarithromycin_Chu_1993.xlsx&quot;</span></span>
 <span id="cb17-38"><a href="#cb17-38" tabindex="-1"></a>dataConfiguration <span class="ot">&lt;-</span> <span class="fu">createImporterConfigurationForFile</span>(<span class="at">filePath =</span> filePath)</span>
 <span id="cb17-39"><a href="#cb17-39" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>sheets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PO250&quot;</span>, <span class="st">&quot;PO250MD&quot;</span>, <span class="st">&quot;PO500&quot;</span>, <span class="st">&quot;PO500MD&quot;</span>)</span>
 <span id="cb17-40"><a href="#cb17-40" tabindex="-1"></a>dataConfiguration<span class="sc">$</span>namingPattern <span class="ot">&lt;-</span> <span class="st">&quot;{Sheet}&quot;</span></span>
